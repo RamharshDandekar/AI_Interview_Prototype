@@ -89,5 +89,58 @@ This project showcases the development of an **AI-Powered Interviewer**, an auto
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
-   cd YOUR_REPO_NAME
+   git clone https://github.com/RamharshDandekar/AI_Interview_Prototype/
+   cd AI_Interview_Prototype
+
+
+
+## API Key Setup
+
+This project requires API keys for Google Gemini API and Eleven Labs AI to function correctly.  It's crucial to set these up properly **before** running the application.  We will use a `.env.local` file to securely store these keys for local development.  **Never commit your API keys directly to your Git repository!**
+
+1. **Obtain API Keys:**
+   * **Google Gemini API:** Go to [Google AI Studio](https://makersuite.google.com/app/apikey) and create a new API key.  Copy this key.
+   * **Eleven Labs AI:** Sign up or log in at [Eleven Labs](https://elevenlabs.io/) and find your API key in your profile settings.  Copy this key.
+
+2. **Create `.env.local` file in the project root:**
+   * In your project's main directory (the root folder where you cloned the repository and where files like `package.json` and `next.config.js` are located), create a new file named **`.env.local`**.  Make sure the filename starts with a dot (`.`).
+
+   * **What is `.env.local`?**  This is a special file in Next.js projects (and many other development environments). It's used to store environment variables – configuration settings that your application needs, such as API keys.  Next.js automatically loads variables from `.env.local` when you run your development server.  The `.local` part signifies that these settings are specific to your local development environment and are usually not meant for production.
+
+3. **Add API Keys to `.env.local`:**
+   * Open the **`.env.local`** file you just created with a text editor.
+   * Add the following lines to the file, replacing `YOUR_GEMINI_API_KEY_HERE` and `YOUR_ELEVEN_LABS_API_KEY_HERE` with the actual API keys you obtained in step 1. **Make sure there are no spaces around the `=` sign.**
+
+     ```
+     GOOGLE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+     ELEVEN_LABS_API_KEY=YOUR_ELEVEN_LABS_API_KEY_HERE
+     ```
+
+     **Example `.env.local` file content (replace with your *actual* keys):**
+
+     ```
+     GOOGLE_GEMINI_API_KEY=AIzaSy****************************************
+     ELEVEN_LABS_API_KEY=e****************************************
+     ```
+
+4. **Important: Add `.env.local` to `.gitignore`:**
+   * **Security is critical!**  You must prevent your API keys from being accidentally committed to your Git repository.
+   * Open the **`.gitignore`** file in your project's root directory. If you don't have one, create a file named `.gitignore`.
+   * Add the following line to your `.gitignore` file:
+
+     ```
+     .env.local
+     ```
+
+   * **What does `.gitignore` do?** This file tells Git to ignore certain files and folders when you commit changes. By adding `.env.local` to `.gitignore`, you are instructing Git to *not* track or include this file in your repository. This ensures your sensitive API keys remain private and are not exposed in your public GitHub repository.
+
+**After completing these steps, Next.js will be able to access your API keys as environment variables (e.g., `process.env.GOOGLE_GEMINI_API_KEY`) when you run your application locally.**
+
+**Double-Check:**
+
+* **Filename:**  Ensure you named the file exactly `.env.local` (including the dot at the beginning).
+* **Location:**  Make sure `.env.local` is in the root directory of your project, not inside any subfolders.
+* **`.gitignore`:** Verify that `.env.local` is correctly listed in your `.gitignore` file.
+* **No Spaces:**  Double-check that there are no extra spaces around the `=` sign in your `.env.local` file.
+
+By following these detailed steps, you'll have correctly set up your `.env.local` file and secured your API keys for your Next.js AI Interview Prototype project!
